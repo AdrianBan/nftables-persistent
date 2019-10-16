@@ -1,0 +1,7 @@
+#!/usr/bin/make -f
+
+override_dh_installinit:
+	dh_installinit -- start 37 S . stop 37 0 1 6 .
+
+%:
+	dh $@ --with systemd

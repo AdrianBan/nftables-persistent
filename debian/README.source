@@ -1,0 +1,8 @@
+
+  nftables-persistent has become a native package (meaning there is no
+  upstream tarball). In its present form, nftables-persistent is unlikely
+  to be useful outside Debian or Debian-derivatives, and I do not plan to
+  include any support for other distributions, so a native package makes the
+  maintenance overhead considerably smaller.
+
+ -- Adrian Ban <devel@abtelecom.ro>  Tue, 16 Oct 2019 16:38:17 +0200

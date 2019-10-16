@@ -1,0 +1,21 @@
+Source: nftables-persistent
+Section: admin
+Priority: optional
+Maintainer: Adrian Ban <devel@abtelecom.ro>
+Build-Depends: debhelper (>= 7.0.50~), dh-systemd, po-debconf
+Standards-Version: 3.9.6
+Vcs-Browser: https://github.com/AdrianBan/nftables-persistent
+Vcs-Git: https://github.com/AdrianBan/nftables-persistent
+
+Package: nftables-persistent
+Architecture: all
+Depends: lsb-base, ${misc:Depends}
+Breaks: iptables-persistent, netfilter-persistent, ipset-persistent
+Replaces: iptables-persistent, netfilter-persistent, ipset-persistent
+Pre-Depends: ${misc:Pre-Depends}
+Description: boot-time loader for nftables configuration
+ This package provides a loader for nftables configuration using a
+ plugin-based architecture. It can load, flush and save a running
+ configuration. Extending nftables-persistent with plugins is trivial and can
+ be done in any language.
+

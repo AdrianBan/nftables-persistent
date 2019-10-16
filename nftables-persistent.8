@@ -1,0 +1,81 @@
+.TH nftables-persistent 8
+.SH NAME
+nftables-persistent \- load, flush and save nftables rule sets
+.SH SYNOPSIS
+.B nftables-persistent
+start
+.PP
+.B nftables-persistent
+stop
+.PP
+.B nftables-persistent
+flush
+.PP
+.B nftables-persistent
+save
+.SH DESCRIPTION
+.B nftables-persistent
+uses a set of plugins to load, flush and save nftables rules at boot and halt time.
+Plugins can be written in any suitable language and stored in
+.I /usr/share/nftables-persistent/plugins.d
+.SH OPTIONS
+.TP
+start
+Calls all plugins with the
+.I start
+argument, causing them to load their rules into nftables.
+.TP
+stop
+If the configuration
+.I FLUSH_ON_STOP
+is enabled, calls all plugins with the
+.I flush
+argument, causing them to remove their rules from nftables.
+Otherwise, emits a warning only.
+.TP
+flush
+Calls all plugins with the
+.I flush
+argument, causing them to remove their rules from nftables.
+.TP
+save
+Calls all plugins with the
+.I save
+argument, causing them to save the currently-loaded rules to persistent storage.
+.SH PLUGINS
+Plugins can be written in any language and are merely executed by
+.B nftables-persistent
+with a single argument.
+All plugins are stored in
+.I /usr/share/nftables-persistent/plugins.d
+.PP
+Plugins must implement the
+.I start
+.I flush
+and 
+.I save
+arguments and must not rely on additional arguments for other functionality.
+.br
+Plugins must return 0 on success and any other code on failure.
+.PP
+Plugins are free to use and extend the configuration in
+.I /etc/default/nftables-persistent
+and to implement their own configuration files.
+.SH FILES
+.TP
+.I /etc/default/nftables-persistent
+Main configuration file
+.TP
+.I /usr/share/nftables-persistent/plugins.d
+Plugin directory
+.SH COPYRIGHT
+Copyright (C) 2019 Adrian Ban <devel@abtelecom.ro>
+.br
+Copyright (C) 2019 Adrian Ban <devel@abtelecom.ro>
+.PP
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+.SH AUTHORS
+Adrian Ban <devel@abtelecom.ro>

@@ -1,0 +1,22 @@
+nftables-persistent and its plugins
+------------------------------------
+
+nftables-persistent is used to load and save filter rules.
+This tool cames with a nft plugin.
+
+Commands are run from nftables-persistent. For example, to save
+all filter rules:
+
+   nftables-persistent save
+
+or to load them:
+
+   nftables-persistent start
+
+For more details, see `man nftables-persistent`.
+
+The system service will try to load rules at startup if enabled, but by
+default it will not flush rules at shutdown. This behaviour can be changed
+by editing /etc/default/nftables-persistent.
+
+ -- Adrian Ban <devel@abtelecom.ro>  Tue, 16 Oct 2019 11:11:00 +0100

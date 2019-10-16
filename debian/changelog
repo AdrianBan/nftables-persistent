@@ -1,0 +1,7 @@
+nftables-persistent (0.1.0) unstable; urgency=medium
+
+  * First release of nftables-persistent
+  * Based on netfilter-persistent
+
+ -- Adrian Ban <devel@abtelecom.ro>  Tue, 16 Oct 2019 16:12:28 +0200
+

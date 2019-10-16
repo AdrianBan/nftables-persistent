@@ -1,0 +1,21 @@
+# These templates have been reviewed by the debian-l10n-english
+# team
+#
+# If modifications/additions/rewording are needed, please ask
+# debian-l10n-english@lists.debian.org for advice.
+#
+# Even minor modifications require translation updates and such
+# changes should be coordinated with translators and reviewers.
+
+Template: nftables-persistent/autosave
+Type: boolean
+Default: true
+_Description: Save current NFTables rules?
+ Current nftables rules can be saved to the configuration
+ file /etc/nftables/rules. These rules will then be loaded automatically
+ during system startup.
+ .
+ Rules are only saved automatically during package installation. See the
+ manual page of nft(8) for instructions on keeping the rules file
+ up-to-date.
+

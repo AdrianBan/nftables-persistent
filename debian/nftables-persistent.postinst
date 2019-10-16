@@ -1,0 +1,32 @@
+#!/bin/sh
+
+set -e
+
+# Source debconf library
+. /usr/share/debconf/confmodule
+
+case "$1" in
+configure)
+    db_get nftables-persistent/autosave_done || true
+    if [ "x$RET" != "xtrue" ]; then
+        db_get nftables-persistent/autosave || true
+        if [ "x$RET" = "xtrue" ]; then
+	    if which nft > /dev/null ; then
+		if nft list ruleset > /dev/null; then
+		    nft list ruleset > /etc/nftables/rules
+		else
+                    echo "NFTables: Unable to save"
+		fi
+	    else
+                echo "NFTables: Can't find nftables in $PATH, please check your system"
+            fi
+        fi
+
+        db_set nftables-persistent/autosave_done true || true
+    fi
+
+    update-rc.d nftables-persistent remove
+;;
+esac
+
+#DEBHELPER#
