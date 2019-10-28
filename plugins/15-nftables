@@ -33,7 +33,7 @@ save_rules()
     if [ ! "${NFTABLES_SKIP_SAVE}x" = "yesx" ]; then
         touch /etc/nftables/rules
         chmod 0640 /etc/nftables/rules
-        nft list ruleset > /etc/nftables/rules
+        nft -n list ruleset > /etc/nftables/rules
     fi
 }
 
